@@ -1,103 +1,98 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Brain, TrendingUp, AlertCircle, CheckCircle, Clock, Lightbulb } from "lucide-react";
+import { Brain, TrendingUp, AlertTriangle, Sparkles, ThumbsUp, PenSquare, ThumbsDown, Lightbulb } from "lucide-react";
 
 export default function SummaryCard() {
+  const stats = [
+    { title: "Positive", count: 25, Icon: Sparkles, color: "text-teal-600", bg: "bg-teal-100" },
+    { title: "Supportive", count: 50, Icon: ThumbsUp, color: "text-green-600", bg: "bg-green-100" },
+    { title: "Critical", count: 35, Icon: PenSquare, color: "text-yellow-600", bg: "bg-yellow-100" },
+    { title: "Concerned", count: 25, Icon: AlertTriangle, color: "text-orange-600", bg: "bg-orange-100" },
+    { title: "Negative", count: 15, Icon: ThumbsDown, color: "text-red-600", bg: "bg-red-100" },
+  ];
+
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 lg:space-y-8">
       <Card className="bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200 shadow-lg">
-        <CardHeader className="pb-6">
-          <CardTitle className="flex items-center gap-3 text-2xl md:text-3xl text-slate-900">
-            <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center">
-              <Brain className="w-7 h-7 text-white" />
+        <CardHeader className="pb-4 lg:pb-6">
+          <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl xl:text-3xl text-slate-900">
+            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-purple-600 rounded-xl flex items-center justify-center">
+              <Brain className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
             </div>
-            Next_code AI Analysis Summary
+            <span className="leading-tight">Next_code AI Analysis Summary</span>
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-8">
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <CheckCircle className="w-7 h-7 text-green-600" />
+        <CardContent className="space-y-6 lg:space-y-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4 mb-6 lg:mb-8">
+            {stats.map(stat => (
+              <div key={stat.title} className="text-center p-3 lg:p-4 bg-white rounded-lg shadow-sm">
+                <div className={`w-8 h-8 lg:w-10 lg:h-10 ${stat.bg} rounded-full flex items-center justify-center mx-auto mb-2`}>
+                  <stat.Icon className={`w-4 h-4 lg:w-5 lg:h-5 ${stat.color}`} />
+                </div>
+                <div className={`text-xl lg:text-2xl font-bold ${stat.color} mb-1`}>{stat.count}</div>
+                <div className="text-xs lg:text-sm text-slate-600">{stat.title}</div>
               </div>
-              <div className="text-3xl font-bold text-green-600 mb-1">60</div>
-              <div className="text-base text-slate-600">Supportive Comments</div>
-            </div>
-            <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <AlertCircle className="w-7 h-7 text-red-600" />
-              </div>
-              <div className="text-3xl font-bold text-red-600 mb-1">20</div>
-              <div className="text-base text-slate-600">Critical Concerns</div>
-            </div>
-            <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-              <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <Clock className="w-7 h-7 text-yellow-600" />
-              </div>
-              <div className="text-3xl font-bold text-yellow-600 mb-1">20</div>
-              <div className="text-base text-slate-600">Neutral/Mixed Views</div>
-            </div>
+            ))}
           </div>
 
-          <div className="bg-white rounded-lg p-6 md:p-8 shadow-sm">
-            <h3 className="font-bold text-xl md:text-2xl text-slate-900 mb-6 flex items-center gap-3">
-              <TrendingUp className="w-6 h-6 text-purple-600" />
-              Key Insights from Stakeholder Feedback
+          <div className="bg-white rounded-lg p-4 lg:p-6 xl:p-8 shadow-sm">
+            <h3 className="font-bold text-lg lg:text-xl xl:text-2xl text-slate-900 mb-4 lg:mb-6 flex items-center gap-3">
+              <TrendingUp className="w-5 h-5 lg:w-6 lg:h-6 text-purple-600" />
+              Key Themes Across Sentiments
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 lg:space-y-6">
               <div>
-                <h4 className="font-semibold text-lg text-slate-800 mb-3">Most Appreciated Changes:</h4>
+                <h4 className="font-semibold text-base lg:text-lg text-slate-800 mb-3">Dominant Positive & Supportive Themes:</h4>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-green-100 text-green-800 border-green-300 text-sm px-3 py-1">CSR Threshold Revision</Badge>
-                  <Badge className="bg-green-100 text-green-800 border-green-300 text-sm px-3 py-1">Digital Filing Procedures</Badge>
-                  <Badge className="bg-green-100 text-green-800 border-green-300 text-sm px-3 py-1">Virtual AGM Provisions</Badge>
-                  <Badge className="bg-green-100 text-green-800 border-green-300 text-sm px-3 py-1">SME Compliance Reduction</Badge>
+                  <Badge className="bg-green-100 text-green-800 border-green-300 text-xs lg:text-sm px-2 lg:px-3 py-1">Complete Digitization</Badge>
+                  <Badge className="bg-green-100 text-green-800 border-green-300 text-xs lg:text-sm px-2 lg:px-3 py-1">SME Relief Measures</Badge>
+                  <Badge className="bg-green-100 text-green-800 border-green-300 text-xs lg:text-sm px-2 lg:px-3 py-1">Social Sector Funding</Badge>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-semibold text-lg text-slate-800 mb-3">Primary Concerns:</h4>
+                <h4 className="font-semibold text-base lg:text-lg text-slate-800 mb-3">Core Negative & Concerned Themes:</h4>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-red-100 text-red-800 border-red-300 text-sm px-3 py-1">Excessive Penalty Provisions</Badge>
-                  <Badge className="bg-red-100 text-red-800 border-red-300 text-sm px-3 py-1">Aggressive Timelines</Badge>
-                  <Badge className="bg-red-100 text-red-800 border-red-300 text-sm px-3 py-1">Director Liability Risks</Badge>
-                  <Badge className="bg-red-100 text-red-800 border-red-300 text-sm px-3 py-1">Administrative Burden</Badge>
+                  <Badge className="bg-red-100 text-red-800 border-red-300 text-xs lg:text-sm px-2 lg:px-3 py-1">Punitive Penalty Structure</Badge>
+                  <Badge className="bg-red-100 text-red-800 border-red-300 text-xs lg:text-sm px-2 lg:px-3 py-1">Unrealistic Compliance Deadlines</Badge>
+                  <Badge className="bg-red-100 text-red-800 border-red-300 text-xs lg:text-sm px-2 lg:px-3 py-1">Vague Director Liability</Badge>
                 </div>
               </div>
 
-              <div>
-                <h4 className="font-semibold text-lg text-slate-800 mb-3">Areas Needing Clarification:</h4>
+               <div>
+                <h4 className="font-semibold text-base lg:text-lg text-slate-800 mb-3">Primary Areas for Consultation:</h4>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-sm px-3 py-1">Implementation Guidelines</Badge>
-                  <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-sm px-3 py-1">Transition Periods</Badge>
-                  <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-sm px-3 py-1">Sector-Specific Rules</Badge>
-                  <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-sm px-3 py-1">Monitoring Mechanisms</Badge>
+                  <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-xs lg:text-sm px-2 lg:px-3 py-1">Practical Implementation Roadmaps</Badge>
+                  <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-xs lg:text-sm px-2 lg:px-3 py-1">Industry-Specific Nuances</Badge>
+                  <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-xs lg:text-sm px-2 lg:px-3 py-1">Clearer Definitions</Badge>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-6 md:p-8 text-white shadow-lg">
+          <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-4 lg:p-6 xl:p-8 text-white shadow-lg">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-10 h-10 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
-                <Lightbulb className="w-6 h-6" />
+              <div className="w-8 h-8 lg:w-10 lg:h-10 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
+                <Lightbulb className="w-5 h-5 lg:w-6 lg:h-6" />
               </div>
-              <h3 className="font-bold text-xl md:text-2xl">Next_code AI Recommendations</h3>
+              <h3 className="font-bold text-lg lg:text-xl xl:text-2xl">Next_code AI Recommendations</h3>
             </div>
-            <div className="text-base md:text-lg leading-relaxed space-y-4">
+            <div className="text-sm lg:text-base xl:text-lg leading-relaxed space-y-3 lg:space-y-4">
               <p>
-                The analysis of 100 stakeholder comments reveals a predominantly positive outlook (60%), driven by strong appreciation for reforms that reduce administrative burdens and promote digitization. Stakeholders are particularly enthusiastic about changes that benefit SMEs and modernize corporate procedures.
+                The analysis of 150 comments shows a strong but polarized response. While a combined 75 comments (50%) are broadly supportive ('Positive' and 'Supportive'), a significant 40 comments (27%) voice negative or concerned objections. This indicates that while the policy direction is appreciated, specific provisions are highly contentious.
               </p>
               <p>
-                However, significant reservations persist, with 20% of comments raising critical concerns about the financial impact of new penalties and the feasibility of proposed timelines. A further 20% express conditional support, contingent on clearer implementation guidelines and phased rollouts.
+                The 35 'Critical/Suggestive' comments represent a crucial swing group whose support can be won by addressing practical implementation issues. They are not against the reforms but are wary of execution.
               </p>
               <p>
-                <strong>Our AI recommends a dual-pronged strategy:</strong>
+                <strong>Our AI recommends a multi-tiered strategic response:</strong>
                 <ol className="list-decimal list-inside mt-2 space-y-2">
-                  <li><strong>Maintain Momentum:</strong> Proceed with widely supported measures (e.g., virtual AGMs, digital filings) to build goodwill and demonstrate progress.</li>
-                  <li><strong>Address Concerns Proactively:</strong> Initiate targeted working groups to revise the penalty structure and develop practical, phased timelines for technical compliance. This will mitigate risks for SMEs and convert neutral parties into supporters.</li>
+                  <li><strong>Fast-Track & Amplify:</strong> Immediately proceed with and publicize the overwhelmingly popular reforms (e.g., digitization) to build strong positive momentum.</li>
+                  <li><strong>Isolate & Re-evaluate:</strong> Isolate the clauses receiving 'Negative' feedback (e.g., penalties, director liability). Form a high-level committee to redraft these specific sections in consultation with key critics to prevent widespread industry pushback.</li>
+                  <li><strong>Engage & Clarify:</strong> Proactively engage with the 'Critical/Suggestive' and 'Concerned' groups by releasing detailed FAQs, implementation roadmaps, and hosting workshops. Converting these segments is key to achieving a supermajority of support.</li>
                 </ol>
               </p>
             </div>
@@ -107,3 +102,4 @@ export default function SummaryCard() {
     </div>
   );
 }
+
