@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { BarChart3, FileText, Upload, Eye, PieChart, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,29 +15,33 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="max-w-7xl mx-auto px-4 py-4 lg:py-8">
         <Tabs value={activeMainTab} onValueChange={setActiveMainTab} className="w-full">
-          <div className="flex justify-between items-center mb-8">
-            <TabsList className="grid w-auto grid-cols-4 bg-white shadow-sm">
-              <TabsTrigger value="home" className="gap-2">
-                <FileText className="w-4 h-4" />
-                Home
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-6 lg:mb-8 gap-4">
+            <TabsList className="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:w-auto bg-white shadow-sm p-1 rounded-lg h-auto">
+              <TabsTrigger value="home" className="gap-1 lg:gap-2 text-xs lg:text-sm py-2 px-2 lg:px-3">
+                <FileText className="w-3 h-3 lg:w-4 lg:h-4" />
+                <span className="hidden sm:inline">Home</span>
+                <span className="sm:hidden">Home</span>
               </TabsTrigger>
-              <TabsTrigger value="sentiment" className="gap-2">
-                <BarChart3 className="w-4 h-4" />
-                Sentiment Analysis
+              <TabsTrigger value="sentiment" className="gap-1 lg:gap-2 text-xs lg:text-sm py-2 px-2 lg:px-3">
+                <BarChart3 className="w-3 h-3 lg:w-4 lg:h-4" />
+                <span className="hidden sm:inline">Sentiment</span>
+                <span className="sm:hidden">Sentiment</span>
               </TabsTrigger>
-              <TabsTrigger value="ai-summary" className="gap-2">
-                <Brain className="w-4 h-4" />
-                AI Summary
+              <TabsTrigger value="ai-summary" className="gap-1 lg:gap-2 text-xs lg:text-sm py-2 px-2 lg:px-3">
+                <Brain className="w-3 h-3 lg:w-4 lg:h-4" />
+                <span className="hidden sm:inline">AI Summary</span>
+                <span className="sm:hidden">Summary</span>
               </TabsTrigger>
-              <TabsTrigger value="insights" className="gap-2">
-                <PieChart className="w-4 h-4" />
-                Visual Insights
+              <TabsTrigger value="insights" className="gap-1 lg:gap-2 text-xs lg:text-sm py-2 px-2 lg:px-3">
+                <PieChart className="w-3 h-3 lg:w-4 lg:h-4" />
+                <span className="hidden sm:inline">Insights</span>
+                <span className="sm:hidden">Insights</span>
               </TabsTrigger>
             </TabsList>
             
-            <Button className="bg-purple-600 hover:bg-purple-700 gap-2 shadow-lg">
+            <Button className="bg-purple-600 hover:bg-purple-700 gap-2 shadow-lg w-full lg:w-auto">
               <Upload className="w-4 h-4" />
               Upload Draft
             </Button>
